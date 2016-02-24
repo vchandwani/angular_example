@@ -1,0 +1,29 @@
+[{
+
+        "code": 1,
+
+        "country": "India",
+
+        "cities": [ "New Delhi", "New Ashoknagar","CP","South Ex","Chanakaya Puri"]
+
+ }, 
+{
+
+        "code": 2,
+
+        "country": "Nepal",
+
+        "cities": [ "Lumbini",   "Kathmandu"
+
+        ]
+
+}, 
+{
+
+        "code": 3,
+
+        "country": "United Kingdom",
+
+        "cities": ["London","Manchester","South Hampton","North Hampton"]
+
+}]

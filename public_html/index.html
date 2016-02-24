@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>    
+    <head>
+        <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="mainModule.js"></script>
+        <script src="mainController.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <style>
+        table, th , td {
+          border: 1px solid grey;
+          border-collapse: collapse;
+          padding: 5px;
+        }
+        table tr:nth-child(odd) {
+          background-color: #f2f2f2;
+        }
+        table tr:nth-child(even) {
+          background-color: #ffffff;
+        }
+        </style>
+        <title>
+            Using Angular JS
+        </title>
+    </head>
+    <body data-ng-app="mainModule">   
+    <form name="studentForm" novalidate>
+            
+        <div ng-controller="mainController">
+            Name :
+            <br/>
+            <input type="text" ng-model="nameInput"> {{ nameInput }}            
+                <table>
+                    <tr ng-repeat="cust in names | filter:nameInput">
+                        <td>
+                            {{cust.name}} - {{cust.city}}
+                            <table>
+                                <tr ng-repeat="subjects in cust.subject">
+                                    <td>
+                                        {{subjects.name}} - {{subjects.code}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            <br/>
+            <table>
+                <tr>
+                    <td>
+                        Value 1
+                    </td>
+                    <td>
+                        <input type="text" name="numberinput" ng-model="numberInput" value="{{numberInput}}" required /> 
+                        <span style="color: red" ng-show="studentForm.numberinput.$dirty && studentForm.numberinput.$invalid">
+                            <span ng-show="studentForm.numberinput.$error.required">Please enter Value</span>                            
+                        </span>
+                        <span style="color:red" ng-show="studentForm.numberinput.$dirty && studentForm.numberinput.$invalid">
+                            <span ng-show="studentForm.numberinput.$error.required">Number is required.</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Value 2
+                    </td>
+                    <td>
+                        <input type="text" name="dayinput" ng-model="dayInput" value="{{dayInput}}" required /> 
+                        <span style="color: red" ng-show="studentForm.dayinput.$dirty && studentForm.dayinput.$invalid">
+                            <span ng-show="studentForm.dayinput.$error.required">Please enter Value</span>                            
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        OutPut
+                    </td>
+                    <td>
+                         <input type="text"  disabled="disabled" value="{{ numberInput * dayInput | currency }} " /> 
+                    </td>
+                </tr>
+            </table>
+            
+            <input type="checkbox" ng-model="showButton">Agree To terms
+            <button ng-click="submit();bookingCount =bookingCount+1;" ng-show="showButton" >Proceed!</button>
+            
+            <p ng-show="showButton">Total Bookings : {{bookingCount}}</p>            
+        </div>
+    </form>
+        
+        <br/><br/>
+        <div>
+            Sample Data Save Example
+        </div>        
+        <form name="sample" id="sample" action="saveData.php">
+            <div ng-controller="mainController">
+            <table>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <input required data-ng-model="name" type="text"  /> {{name}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Salary
+                    </td>
+                    <td>
+                        <input required data-ng-model="salary" type="number" /> {{salary}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Role
+                    </td>
+                    <td>
+                        <input type="text" ng-model="roleList">
+                        <br/>
+                        
+                        <div ng-repeat="role in roles | filter:roleList ">                            
+                            <input ng-model="roleValue" type="checkbox" value="{{role}}" id="role" name="role" />
+                            {{role}}
+                        </div>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit"> Save </button>
+                    </td>
+                    <td>
+                        User Count {{userCount}}
+                    </td>
+                </tr>
+            </table>
+            </div>
+        </form>    
+    </body>    
+</html>

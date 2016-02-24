@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <style>
+    label
+    {
+      width: 200px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    select
+    {
+      width: 190px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    textarea
+    {
+      width: 250px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body ng-app="mainModule">
+  <div ng-controller="mainController">
+    <h2>1. Instance Size</h2>
+   <label for="instancesArraySel">Instance Size:</label>
+    <select id="instancesArraySel" ng-model="instanceArrayValue" ng-options="instance for instance  in instancesizeArray">
+      <option value="">[Select Instance Size]</option>
+    </select><br />
+    <br />
+    <strong>Instance Size:</strong> {{instanceArrayValue}}<br />
+    <br />
+    <h2>2. Instance Type</h2>
+    <!-- label for value in array -->
+    <label for="instancesArraySel">Instance Type:</label>
+    <select id="instancesArraySel" ng-model="instanceArrayValueType" ng-options="instance for instance  in instancetypeArray">
+      <option value="">[Select Instance Type]</option>
+    </select><br />
+    <br />
+    <strong>Instance Type:</strong> {{instanceArrayValueType}}<br />
+    <br />
+	<h2>3. Operating System Type</h3>
+    <!-- label for value in array -->
+    <label for="operatingsystemArraySel">Operating System:</label>
+    <select id="operatingsystemArraySel" ng-model="operatingsystemArrayValueType" ng-options="operating for operating  in operatingsystemArray ">
+      <option value="">[Select Operating System]</option>
+    </select><br />
+    <br />
+    <strong>Operating System Type:</strong> {{operatingsystemArrayValueType}}<br />
+    <br />
+    <h2>4. EBS</h2>
+    <!-- label for value in array -->
+    <label for="ebssystemArraySel">EBS:</label>
+    <select id="ebssystemArraySel" ng-model="ebsArrayValueType" ng-options="ebssystem for ebssystem  in ebsArray">
+      <option value="">[Select EBS]</option>
+    </select><br />
+    <br />
+    <strong>EBS:</strong> {{ebsArrayValueType}}<br />
+    <br />
+	<h2>5. Elastic IP</h2>
+    <!-- label for value in array -->
+    <label for="elasticipArraySel">Elastic IP :</label>
+    <select id="elasticipArraySel" ng-model="elasticipValueType" ng-options="elasticip for elasticip  in elasticipArray">
+      <option value="">[Select ElasticIP]</option>
+    </select><br />
+    <br />
+    <strong>ELasticIP:</strong> {{elasticipValueType}}<br />
+    <br />
+	<h2>6. Database</h2>
+    <!-- label for value in array -->
+    <label for="rdsArraySel">RDS :</label>
+    <select id="rdsArraySel" ng-model="rdsValueType" ng-options="rds for rds  in rdsArray">
+      <option value="">[Select RDS]</option>
+    </select><br />
+    <br />
+    <strong>RDS:</strong> {{rdsValueType}}<br />
+    <br />
+	<h2>8. Access</h2>
+    <!-- label for value in array -->
+    <label for="accessArraySel">Instance Port Access :</label>
+    <select id="accessArraySel" ng-model="accessValueType" ng-options="access for access  in accessportArray">
+      <option value="">[Select RDS]</option>
+    </select><br />
+    <br />
+    <strong>Instance Port Access:</strong> {{accessValueType}}<br />
+    <br />
+    <h3>9. Database Access</h3>
+    <label for="databaseArraySel">Instance Name:</label>
+    <select id="databaseArraySel" ng-model="databaseValueType" ng-options="database for database in multipleArray" multiple>
+      <option value="">[Select Database Access]</option>
+    </select><br />
+    <br />
+    <strong>Instance Name:</strong> {{databaseValueType}}
+  </div>
+  <script>
+  var app = angular.module("mainModule", [])
+  .controller("mainController", function ($scope)
+  {
+    $scope.instancesizeArray = ["Small", "Medium", "Large"];
+    $scope.instancetypeArray = ["Classic", "VPC"];
+	$scope.operatingsystemArray = ["Ubuntu 12.04", "Ubuntu 13.04","Ubuntu 14.04","Centos 6","Centos 7","RHEL 6","RHEL 7"];
+	$scope.ebsArray = ["Yes", "No"];
+	$scope.elasticipArray = ["Yes", "No"];
+    $scope.rdsArray = ["Create New", "Existing One"];
+	$scope.accessportArray = ["80", "8080","22","21"];
+	$scope.multipleArray = ["A", "B", "C","D","E","F","G","H","I","Other"];
+  });
+  </script>
+</body>
+</html>

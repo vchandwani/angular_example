@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src= "Js/angular.min.js"></script>
+</head>
+
+<body>
+
+ <div ng-app="" ng-init="firstName='John';quantity=1;price=5;names=['Jani','Hege','Kai'];mName=[{name:'Jani',country:'Norway'},{name:'Hege',country:'Sweden'},{name:'Kai',country:'Denmark'}]">
+
+<p>Name: <input type="text" ng-model="firstName"></p>
+<p>You wrote: {{ firstName }}</p>
+<br/>
+Quantity: <input type="number"	ng-model="quantity">
+Costs:    <input type="number" ng-model="price">
+
+Total in dollar: {{ quantity * price }}
+
+<br/>
+ <ul>
+    <li ng-repeat="x in names">
+      {{ x }}
+    </li>
+  </ul>
+<hr/>
+<ul>
+  <li ng-repeat="x in mName">
+    {{ x.name + ', ' + x.country }}
+  </li>
+</ul>
+</div> 
+	 
+
+</body>
+</html>

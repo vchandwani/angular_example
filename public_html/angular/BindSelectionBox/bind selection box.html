@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>
+</head>
+<script>
+    angular.module('SelectBoxWithOptions', [])
+      .controller('Controller', ['$scope', '$http',
+        function ($scope, $http) {
+            $http.get('CountriesCitiesList.json')
+              .success(function (data, status, headers, config) {
+                  $scope.locations = data;
+              });
+        }
+      ]);
+</script>
+<body ng-app="SelectBoxWithOptions">
+    <h1>Select box with options</h1>
+    <div ng-controller="Controller">
+        <div>Countries</div>
+        <select ng-model="countries" ng-options="loc.country for loc in locations">
+            <option value="">Please chose country</option>
+        </select>
+        <div>Cities</div>
+        <select ng-model='city' ng-options='c for c in countries.cities'>
+            <option value="">Please chose city</option>
+        </select>
+    </div>
+</body>
+</html>

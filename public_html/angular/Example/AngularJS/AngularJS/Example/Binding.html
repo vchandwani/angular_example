@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../Js/angular.min.js"></script>
+    <script src="../Js/maincontroller.js"></script>
+    <title>angular js</title>
+</head>
+
+<body>
+    <div ng-app="MyApp" ng-controller="BookStore">
+
+        <div ng-repeat="publication in items">
+
+            <ul>
+                <li>
+                    <!-- This works -->
+                    {{publication.Id}}. {{publication.question}}
+                </li>
+            </ul>
+
+            <ul>
+                <!-- This works -->
+
+                <li ng-repeat="category in publication.Answer">{{category.id}}. {{category.option}}
+                </li>
+
+            </ul>
+
+        </div>
+
+        <table class="mytable" ng-repeat="item in items">
+            <tr>
+                <td>
+                    <p><b>{{item.question}}</b> Question.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="service_id" style="width: 220px;"
+                        ng-model="ServiceID"
+                        ng-options="service.id as service.option for service in item.Answer"
+                        required>
+                        <option value="">Select Service</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <!-- <table class="mytable">
+            <tr>
+                <td>
+                    <span>Below output is produced from AngularJS's <strong>ng-bind</strong> directive.</span>
+                </td>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td>
+                    <p><b><span ng-bind="item.Name"></span></b>is in our stock.</p>
+                </td>
+            </tr>
+        </table>-->
+        <!-- <table class="mytable">
+            <tr>
+                <td>
+                    <span>Below output is produced from AngularJS's <strong>ng-non-bindable</strong> directive.</span>
+                </td>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td>
+                    <div ng-non-bindable>
+                        <p><b>{{item.Name}}</b> is in our stock.</p>
+                    </div>
+                </td>
+            </tr>
+        </table>-->
+    </div>
+</body>
+</html>
